@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innomatics Research Labs Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body background="black">
+ 
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <span>Call Us: <a href="tel:+1234567890">+1234567890</a></span>
+            <span>Email: <a href="mailto:info@innomatics.com">info@innomatics.com</a></span>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/icon.png" alt="Innomatics Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Courses</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Data Science</a></li>
+                    <li><a href="#">Full Stack Development</a></li>
+                    <li><a href="#">Digital Marketing</a></li>
+                </ul>
+            </li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+        <div class="slideshow">
+            <img src="https://www.innomatics.in/wp-content/uploads/2023/07/award.jpg" alt="Image 1" class="slide active">
+            <img src="https://www.innomatics.in/wp-content/uploads/2023/07/AWARD-PAGE-1024x1024-1.jpg" alt="Image 2" class="slide">
+            <img src="https://media.glassdoor.com/l/69/95/0d/aa/banner.jpg?signature=3eee1e9af4131d7dcb5e46c3f2eca663b564d1226d60f5f5a512dc229060f1fd" alt="Image 3" class="slide">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB6jm36ZY7KVXZEJ9ZqL8JiwFOee94bIFmPvcVg3NO4z6WFKQzjocs8vdycrieoTvfEh8&usqp=CAU" alt="Image 4" class="slide">
+            <img src="https://media.licdn.com/dms/image/v2/D561FAQFcyfZkj7-_4A/feedshare-document-images_800/B56ZTe9MLuGsAg-/1/1738907373367?e=1740009600&v=beta&t=jrHDRt2HTzgn_em0q_xX1opbzNuAj5lc2VQ9YRaKED8" alt="Image 5" class="slide">
+        </div>
+        <button class="next-button">&gt;</button>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Transform Your Career with Innomatics</h1>
+        <p>Join our advanced training programs in Data Science, AI, and more.</p>
+        <button>Get Started</button>
+    </header>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <h2>Our Courses</h2>
+        <div class="course-cards">
+            <div class="course-card">
+                <img src="images/No-1-best-data-science-course-training-institute-in-hyderabad.webp" alt="Data Science Course">
+                <h3>Data Science</h3>
+                <p>NASSCOM Futureskills Prime Certified Data Science
+                    This is a great choice for tech geeks, students, working professionals and aspiring data scientists who want to upskill and build a better foundation is the stream of Data Science.</p>
+            </div>
+            <div class="course-card">
+                <img src="images/FULL-STACK-WEB.webp" alt="Full Stack Development Course">
+                <h3>Full Stack Development</h3>
+                <p>Learn the right skills to break into a development career & advance yourself as a full-stack Developer. It includes Frontend, Backend, databases, debugging & testing..</p>
+            </div>
+            <div class="course-card">
+                <img src="images/WhatsApp-Image-2025-01-17-at-11.49.18.webp" alt="Digital Marketing Course">
+                <h3>Digital Marketing</h3>
+                <p>Generative AI Course at Innomatics is perfect for students, job seekers, entrepreneurs, and professionals who want to learn the latest AI tools and skills to grow in their careers..</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Innomatics Research Labs is dedicated to transforming careers through advanced training in various fields. Our expert trainers provide hands-on experience and real-world projects.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Innomatics Research Labs. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const nextButton = document.querySelector('.next-button');
+
+        function showNextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        nextButton.addEventListener('click', showNextSlide);
+    </script>
+
+</body>
+</html>
