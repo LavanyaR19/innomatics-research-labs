@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Solutions</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .problem {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .problem:hover {
+            transform: translateY(-2px);
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #2575fc;
+            outline: none;
+            box-shadow: 0 0 5px rgba(37, 117, 252, 0.3);
+        }
+
+        button {
+            background: #2575fc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #1a5bbf;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .result {
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        h3 {
+            color: #2575fc;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+     <!-- Problem 1: ATM Withdrawal -->
+     <div class="problem">
+        <h3>1. ATM Withdrawal System</h3>
+        <input type="number" id="balance" placeholder="Balance">
+        <input type="number" id="amount" placeholder="Amount">
+        <input type="password" id="pin" placeholder="PIN">
+        <button onclick="testAtm()">Withdraw</button>
+        <div id="atmResult" class="result"></div>
+    </div>
+
+    <!-- Problem 2: Online Shopping -->
+    <div class="problem">
+        <h3>2. Online Shopping Calculator</h3>
+        <input type="number" id="orderAmount" placeholder="Order Amount">
+        <button onclick="testShopping()">Calculate</button>
+        <div id="shoppingResult" class="result"></div>
+    </div>
+
+    <!-- Problem 3: Student Grading -->
+    <div class="problem">
+        <h3>3. Student Grading System</h3>
+        <input type="number" id="marks" placeholder="Marks">
+        <input type="number" id="attendance" placeholder="Attendance %">
+        <button onclick="testGrade()">Get Grade</button>
+        <div id="gradeResult" class="result"></div>
+    </div>
+
+    <!-- Problem 4: Traffic Light -->
+    <div class="problem">
+        <h3>4. Smart Traffic Light</h3>
+        <input type="text" id="trafficDensity" placeholder="Traffic Density">
+        <button onclick="testTraffic()">Get Duration</button>
+        <div id="trafficResult" class="result"></div>
+    </div>
+
+    <!-- Problem 5: Movie Ticket -->
+    <div class="problem">
+        <h3>5. Movie Ticket Pricing</h3>
+        <input type="number" id="age" placeholder="Age">
+        <input type="number" id="showTime" placeholder="Show Time (24h)">
+        <button onclick="testTicket()">Calculate Price</button>
+        <div id="ticketResult" class="result"></div>
+    </div>
+
+    <!-- Problem 6: Job Application -->
+    <div class="problem">
+        <h3>6. Job Application Filter</h3>
+        <input type="number" id="jobAge" placeholder="Age">
+        <input type="number" id="experience" placeholder="Experience (years)">
+        <input type="text" id="qualification" placeholder="Qualification">
+        <button onclick="testJob()">Check Eligibility</button>
+        <div id="jobResult" class="result"></div>
+    </div>
+
+    <!-- Problem 7: E-commerce Coupon -->
+    <div class="problem">
+        <h3>7. E-commerce Coupon</h3>
+        <input type="number" id="couponAmount" placeholder="Order Amount">
+        <input type="text" id="couponCode" placeholder="Coupon Code">
+        <button onclick="testCoupon()">Apply Coupon</button>
+        <div id="couponResult" class="result"></div>
+    </div>
+
+    <!-- Problem 8: Fitness Membership -->
+    <div class="problem">
+        <h3>8. Fitness Membership</h3>
+        <input type="checkbox" id="trainer"> Wants Trainer
+        <input type="checkbox" id="diet"> Wants Diet Plan
+        <button onclick="testFitness()">Choose Plan</button>
+        <div id="fitnessResult" class="result"></div>
+    </div>
+
+    <!-- Problem 9: Electricity Bill -->
+    <div class="problem">
+        <h3>9. Electricity Bill</h3>
+        <input type="number" id="units" placeholder="Units">
+        <input type="number" id="time" placeholder="Time (24h)">
+        <button onclick="testElectricity()">Calculate Bill</button>
+        <div id="electricityResult" class="result"></div>
+    </div>
+
+    <!-- Problem 10: Flight Booking -->
+    <div class="problem">
+        <h3>10. Flight Booking</h3>
+        <input type="text" id="class" placeholder="Class Type">
+        <input type="number" id="luggage" placeholder="Luggage (kg)">
+        <input type="checkbox" id="student"> Student
+        <input type="checkbox" id="senior"> Senior
+        <button onclick="testFlight()">Calculate Fare</button>
+        <div id="flightResult" class="result"></div>
+    </div>
+
+    <script>
+        /// Problem 1: ATM Withdrawal
+        function atmWithdrawal(balance, amount, pin, enteredPin) {
+            if (pin !== enteredPin) return "Incorrect PIN";
+            if (amount > balance) return "Insufficient Funds";
+            if (amount % 100 !== 0) return "Enter amount in multiples of 100";
+            return `Success! New balance: $${balance - amount}`;
+        }
+
+        // Problem 2: Online Shopping
+        function calculateFinalAmount(orderAmount) {
+            let discount = orderAmount > 1000 ? 0.2 : orderAmount >= 500 ? 0.1 : 0;
+            let shipping = orderAmount > 50 ? 0 : 10;
+            return (orderAmount * (1 - discount) + shipping).toFixed(2);
+        }
+
+        // Problem 3: Student Grading
+        function calculateGrade(marks, attendance) {
+            if (attendance > 90) marks += 5;
+            if (marks >= 90) return "A";
+            if (marks >= 80) return "B";
+            if (marks >= 70) return "C";
+            if (marks >= 60) return "D";
+            return "F";
+        }
+
+        // Problem 4: Traffic Light
+        function trafficLightControl(density) {
+            const durations = {
+                "Heavy Traffic": 60,
+                "Moderate Traffic": 40,
+                "Light Traffic": 20
+            };
+            return durations[density] || 20;
+        }
+
+        // Problem 5: Movie Ticket
+        function calculateTicketPrice(age, showTime) {
+            let price = 12;
+            if (showTime < 17) price *= 0.8;
+            if (age < 12) price *= 0.6;
+            else if (age > 60) price *= 0.7;
+            return price.toFixed(2);
+        }
+
+        // Problem 6: Job Application
+        function isEligibleForJob(age, experience, qualification) {
+            return age >= 21 && age <= 55 && 
+                   experience >= 2 && 
+                   qualification === "Bachelor's Degree";
+        }
+
+        // Problem 7: E-commerce Coupon
+        function applyCoupon(orderAmount, couponCode) {
+            if (couponCode === "DISCOUNT10" && orderAmount > 500) {
+                return (orderAmount * 0.9).toFixed(2);
+            }
+            if (couponCode === "FREESHIP" && orderAmount > 200) {
+                return orderAmount.toFixed(2);
+            }
+            return "Invalid coupon";
+        }
+
+        // Problem 8: Fitness Membership
+        function choosePlan(wantsTrainer, wantsDietPlan) {
+            if (wantsDietPlan) return "VIP ($80)";
+            if (wantsTrainer) return "Premium ($50)";
+            return "Basic ($20)";
+        }
+
+        // Problem 9: Electricity Bill
+        function calculateElectricityBill(units, timeOfDay) {
+            let rate = units < 100 ? 5 : units <= 300 ? 4 : 3;
+            let total = units * rate;
+            if (timeOfDay < 8 || timeOfDay >= 20) total *= 1.1;
+            return total.toFixed(2);
+        }
+
+        // Problem 10: Flight Booking
+        function calculateFlightFare(classType, luggageWeight, isStudent, isSenior) {
+            let fare = 300;
+            if (classType === "Business") fare += 200;
+            if (classType === "First") fare += 500;
+            
+            const extraWeight = Math.max(0, luggageWeight - 20);
+            fare += Math.ceil(extraWeight / 10) * 50;
+            
+            if (isStudent) fare *= 0.85;
+            else if (isSenior) fare *= 0.9;
+            
+            return fare.toFixed(2);
+        }
+
+        // Test Functions
+        function testAtm() {
+            const balance = parseFloat(document.getElementById('balance').value);
+            const amount = parseFloat(document.getElementById('amount').value);
+            const pin = document.getElementById('pin').value;
+            showResult('atmResult', atmWithdrawal(balance, amount, '1234', pin));
+        }
+
+        function testShopping() {
+            const amount = parseFloat(document.getElementById('orderAmount').value);
+            showResult('shoppingResult', `Final Amount: $${calculateFinalAmount(amount)}`);
+        }
+
+        function testGrade() {
+            const marks = parseFloat(document.getElementById('marks').value);
+            const attendance = parseFloat(document.getElementById('attendance').value);
+            showResult('gradeResult', `Grade: ${calculateGrade(marks, attendance)}`);
+        }
+
+        function testTraffic() {
+            const density = document.getElementById('trafficDensity').value;
+            showResult('trafficResult', `Green Light Duration: ${trafficLightControl(density)} seconds`);
+        }
+
+        function testTicket() {
+            const age = parseFloat(document.getElementById('age').value);
+            const time = parseFloat(document.getElementById('showTime').value);
+            showResult('ticketResult', `Ticket Price: $${calculateTicketPrice(age, time)}`);
+        }
+
+        function testJob() {
+            const age = parseFloat(document.getElementById('jobAge').value);
+            const exp = parseFloat(document.getElementById('experience').value);
+            const qual = document.getElementById('qualification').value;
+            showResult('jobResult', isEligibleForJob(age, exp, qual) ? "Eligible" : "Not Eligible");
+        }
+
+        function testCoupon() {
+            const amount = parseFloat(document.getElementById('couponAmount').value);
+            const code = document.getElementById('couponCode').value;
+            showResult('couponResult', `Final Price: $${applyCoupon(amount, code)}`);
+        }
+
+        function testFitness() {
+            const trainer = document.getElementById('trainer').checked;
+            const diet = document.getElementById('diet').checked;
+            showResult('fitnessResult', choosePlan(trainer, diet));
+        }
+
+        function testElectricity() {
+            const units = parseFloat(document.getElementById('units').value);
+            const time = parseFloat(document.getElementById('time').value);
+            showResult('electricityResult', `Total Bill: $${calculateElectricityBill(units, time)}`);
+        }
+
+        function testFlight() {
+            const classType = document.getElementById('class').value;
+            const luggage = parseFloat(document.getElementById('luggage').value);
+            const student = document.getElementById('student').checked;
+            const senior = document.getElementById('senior').checked;
+            showResult('flightResult', `Total Fare: $${calculateFlightFare(classType, luggage, student, senior)}`);
+        }
+
+        function showResult(elementId, message) {
+            const div = document.getElementById(elementId);
+            div.className = message.includes("Error") || message.includes("Invalid") ? "result error" : "result success";
+            div.textContent = message;
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Solutions</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .problem {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .problem:hover {
+            transform: translateY(-2px);
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #2575fc;
+            outline: none;
+            box-shadow: 0 0 5px rgba(37, 117, 252, 0.3);
+        }
+
+        button {
+            background: #2575fc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #1a5bbf;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .result {
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        h3 {
+            color: #2575fc;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Keep all the problem divs from previous code -->
+    <!-- Problem 1 to Problem 10 sections here -->
+
+    <script>
+        // Keep all JavaScript functions from previous code
+    </script>
+</body>
+</html>
+</html>
