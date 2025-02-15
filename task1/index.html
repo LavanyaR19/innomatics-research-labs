@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Budget Tracker</title>
+    <style>
+        body {
+            background-color: powderblue;
+            font-family: Arial, sans-serif;
+        }
+
+        header, footer, section {
+            text-align: center;
+        }
+
+        /* Header color */
+        h1 {
+            color: darkblue; /* Main heading color */
+        }
+        
+        h2 {
+            color: darkgreen; /* Subheading color */
+        }
+
+        footer p {
+            color: gray; /* Footer color */
+        }
+
+        /* Form styling */
+        form label, form input, form select, form button {
+            color: #333;
+            font-size: 1.1em;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        
+        table, th, td {
+            border: 2px solid #6c757d; /* Color for table border */
+        }
+
+        th {
+            background-color: #4CAF50; /* Header row background color */
+            color: white; /* Text color for header */
+        }
+
+        td {
+            padding: 10px;
+            background-color: #f9f9f9; /* Row background color */
+        }
+
+        td:nth-child(odd) {
+            background-color: #f1f1f1; /* Stripe every other row for better readability */
+        }
+
+        td button {
+            background-color: #007bff; /* Button color */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        td button:hover {
+            background-color: #0056b3; /* Button hover effect */
+        }
+
+        /* Status Colors */
+        .completed {
+            color: green;
+            font-weight: bold;
+        }
+
+        .pending {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Styling for links */
+        a {
+            color: #007bff; /* Link color */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer color */
+        footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <header>
+            <h1>Personal Budget Tracker</h1>
+            <nav>
+                <a href="#">Home</a><br>
+                <a href="#"><b>Add Income/Expense</b></a><br>
+                <a href="#"><b>View Budget Summary</b></a><br>
+            </nav>
+        </header>
+        
+        <section>
+            <h2>Welcome to Personal Budget Tracker</h2>
+            <p><strong>Track your income and expenses to stay on top of your financial goals. You can use this tracker to manage your finances and adjust your spending as needed.</strong></p>
+        </section>
+        
+        <h2>Add Income/Expense</h2>
+        <form> 
+            <label for="amount">Amount:</label>
+            <input id="amount" name="Amount" type="number"><br><br>
+            
+            <label for="category">Category:</label>
+            <select id="category" name="category">
+                <option value="Food">Food</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Salary">Salary</option>
+            </select><br><br>
+            
+            <label for="description">Description:</label>
+            <input id="description" name="Description" type="text"><br><br>
+            
+            <label for="date">Date:</label>
+            <input id="date" name="Date" type="date"><br><br>
+            
+            <label>Type:</label>
+            <input type="radio" id="income" name="Type" value="Income">Income
+            <input type="radio" id="expense" name="Type" value="Expense">Expense
+            <br><br>
+            
+            <button type="submit">Add Entry</button><br><br>
+        </form>
+        
+        <h2>Budget Summary</h2>
+        <table>
+            <tr>
+                <th rowspan="2">Category</th>
+                <th colspan="2">Transaction Details</th>
+                <th rowspan="2">Status</th>
+                <th rowspan="2">Action</th>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Food &#129481;</td>
+                <td>$3300</td>
+                <td>Groceries for the month</td>
+                <td class="completed">Completed</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>Transportation &#128656;</td>
+                <td>$200</td>
+                <td>Monthly salary payment</td>
+                <td class="completed">Completed</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>Entertainment &#127916;&#128253;</td>
+                <td>$250</td>
+                <td>Cinema ticket</td>
+                <td class="completed">Completed</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>Salary &#128176;</td>
+                <td>$4000</td>
+                <td>Monthly salary payment</td>
+                <td class="completed">Completed</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>Saving &#128180;</td>
+                <td>$600</td>
+                <td>Emergency Fund Deposit</td>
+                <td class="completed">Completed</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+            </tr>
+            <tr>
+                <td rowspan="2">Utilities &#127783;&#128704;</td>
+                <td>$60</td>
+                <td>Water Bill</td>
+                <td class="completed">Completed</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>$60</td>
+                <td>Electricity Bill</td>
+                <td class="completed">Completed</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+            </tr>
+            <tr>
+                <td rowspan="2">Housing &#9962;</td>
+                <td>$1300</td>
+                <td>Rent</td>
+                <td class="completed">Completed</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>$350</td>
+                <td>Maintenance Fee</td>
+                <td class="pending">Pending</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+            </tr>
+        </table>
+    </center>
+
+    <hr>
+    <footer>
+        <p>Personal Budget Tracker &#8594; version 1.0</p>
+    </footer>
+    </body>
+</html>
