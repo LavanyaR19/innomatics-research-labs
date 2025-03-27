@@ -1,0 +1,43 @@
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    background: #f4f4f4;
+    padding: 50px;
+  }
+  
+  .home-content {
+    max-width: 500px;
+  }
+  
+  .home-content h1 {
+    font-size: 36px;
+    color: #333;
+  }
+  
+  .home-content p {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #555;
+  }
+  
+  .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .btn:hover {
+    background: #0056b3;
+  }
+  
+  .home-image img {
+    width: 300px;
+    border-radius: 50%;
+  }
+  
